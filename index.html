@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+        />
+
+        <title>reveal.js</title>
+
+        <link rel="stylesheet" href="dist/reset.css" />
+        <link rel="stylesheet" href="dist/reveal.css" />
+        <link rel="stylesheet" href="dist/theme/dracula.css" />
+
+        <!-- Theme used for syntax highlighted code -->
+        <link rel="stylesheet" href="plugin/highlight/monokai.css" />
+    </head>
+    <body>
+        <div class="reveal">
+            <div class="slides">
+                <section
+                    contenteditable="true"
+                    data-auto-animate
+                    data-auto-animate-unmatched="fade"
+                >
+                    <h2>What is TypeScript?</h2>
+                </section>
+                <section data-auto-animate data-auto-animate-unmatched="fade">
+                    <h2>How to use typescript with React</h2>
+                </section>
+                <section data-auto-animate data-auto-animate-unmatched="fade">
+                    <h2>What is TypeScript?</h2>
+                    <ul>
+                        <li>
+                            Definition: TypeScript is a typed superset of
+                            JavaScript that compiles to plain JavaScript.
+                        </li>
+                        <li>
+                            Developed by Microsoft and released as an
+                            open-source language.
+                        </li>
+                        <li>
+                            Designed to enhance JavaScript development with
+                            additional features.
+                        </li>
+                    </ul>
+                </section>
+                <section data-auto-animate data-auto-animate-unmatched="fade">
+                    <h2>Benefits of TypeScript</h2>
+                    <ul>
+                        <li>
+                            Static Typing: Type checking at compile-time helps
+                            catch errors and improves code quality.
+                        </li>
+                    </ul>
+                </section>
+                <section data-auto-animate data-auto-animate-unmatched="fade">
+                    <h2>Benefits of TypeScript</h2>
+                    <ul>
+                        <li>
+                            Static Typing: Type checking at compile-time helps
+                            catch errors and improves code quality.
+                        </li>
+                        <li>
+                            Enhanced IDE Support: TypeScript provides better
+                            code completion, refactoring, and navigation tools.
+                        </li>
+                    </ul>
+                </section>
+                <section data-auto-animate data-auto-animate-unmatched="fade">
+                    <h2>Benefits of TypeScript</h2>
+                    <ul>
+                        <li>
+                            Static Typing: Type checking at compile-time helps
+                            catch errors and improves code quality.
+                        </li>
+                        <li>
+                            Enhanced IDE Support: TypeScript provides better
+                            code completion, refactoring, and navigation tools.
+                        </li>
+                        <li>
+                            Improved Maintainability: Clearer code structure and
+                            type annotations make code easier to understand and
+                            maintain.
+                        </li>
+                    </ul>
+                </section>
+                <section>
+                    <h2>When it makes sense to use TypeScript?</h2>
+                    <h3>When you have a large codebase</h3>
+                    <p>When your codebase is huge, and more than one person works on the project, a type system can help you avoid a lot of common errors. This is especially true for single-page applications.</p>
+                </section>
+                <section data-auto-animate data-auto-animate-unmatched="fade">
+                    <img src="./assets/ex-1.jpg" alt="example" />
+                </section>
+                <section data-auto-animate data-auto-animate-unmatched="fade">
+                    <img src="./assets/ex-2.jpg" alt="example" />
+                </section>
+                <section data-auto-animate data-auto-animate-unmatched="fade">
+                    <img src="./assets/ex-3.jpg" alt="example" />
+                </section>
+                <section data-auto-animate data-auto-animate-unmatched="fade">
+                    <h3>We read code much more than write it!</h3>
+                    <q
+                        >The bad news is that after you write the code you just
+                        learned to write, someone is going to have to read it
+                        (that someone might be you in six months)</q
+                    >
+                </section>
+                <section data-auto-animate data-auto-animate-unmatched="fade">
+                    <h2>Typing React Components</h2>
+                </section>
+                <section data-auto-animate data-auto-animate-unmatched="fade">
+                    <h4>Basic React Component</h4>
+                    <pre>
+                  <code class="hljs" data-line-numbers data-trim>
+                    function FormatDate({ date }) {
+                      return <div>{date.toLocaleString()}</div>;
+                    }
+                  </code>
+                </pre>
+                </section>
+                <section data-auto-animate data-auto-animate-unmatched="fade">
+                    <pre>
+                              <code class="hljs" data-line-numbers data-trim>
+                                interface FormatDateProps {
+                                 date:Date;
+                                }
+                                function FormatDate({ date:FormDateProps }) {
+                                  return <div>{date.toLocaleString()}</div>;
+                                }
+                              </code>
+                            </pre>
+                </section>
+                <section data-auto-animate data-auto-animate-unmatched="fade">
+                    <p>we can call our component with defined props</p>
+                    <pre>
+                                      <code class="hljs" data-line-numbers data-trim>
+                                        &lt;FormatDate
+                                        date={new Date()}
+                                        /&gt;
+                                      </code>
+                                    </pre>
+                    <p>wrong type of props will cause error</p>
+                    <pre>
+                                      // Type error:
+                                       Type 'string' is not assignable to type 'Date'
+                                      <code class="hljs" data-line-numbers data-trim>
+
+                                        &lt;FormatDate
+                                        date="Sep 28 2021"
+                                        /&gt;
+                                      </code>
+                                    </pre>
+                </section>
+
+                <section data-auto-animate data-auto-animate-unmatched="fade">
+                    <h3>Return type</h3>
+                    <pre>
+<code class="hljs" data-line-numbers data-trim>
+interface FormatDateProps {
+date:Date;
+}
+function FormatDate({ date:FormDateProps }):JSX.Element {
+return <div>{date.toLocaleString()}</div>;
+ }
+                                              </code>
+                                            </pre>
+                </section>
+                <section data-auto-animate data-auto-animate-unmatched="fade">
+                    <h3>Return type</h3>
+                    <pre>
+                                                                                                  <code class="hljs" data-line-numbers data-trim>
+                                                                                                    interface FormatDateProps {
+                                                                                                     date:Date;
+                                                                                                    }
+                                                                                                    function FormatDate({ date:FormDateProps }) {
+                                                                                                      return
+                                                                                                      <div>{date.toLocaleString()}</div>;
+                                                                                                    }
+                                                                                                  </code>
+                                                                                                </pre>
+                </section>
+                <section data-auto-animate data-auto-animate-unmatched="fade">
+                    <h3>Return type</h3>
+                    <pre>
+                                                                                                                                                      <code class="hljs" data-line-numbers data-trim>
+                                                                                                                                                        interface FormatDateProps {
+                                                                                                                                                         date:Date;
+                                                                                                                                                        }
+                                                                                                                                                        function FormatDate({ date:FormDateProps }) {
+                                                                                                                                                          return(
+                                                                                                                                                          <div>{date.toLocaleString()}</div>);
+                                                                                                                                                        }
+                                                                                                                                                      </code>
+                                                                                                                                                    </pre>
+                </section>
+                <section data-auto-animate data-auto-animate-unmatched="fade">
+                    <h4>We have several ways to typing components</h4>
+                </section>
+                <section data-auto-animate data-auto-animate-unmatched="fade">
+                    <div>
+                        <h4>Inline typing</h4>
+                        <pre>
+                    <code class="hljs" data-line-numbers data-trim>
+                        const TextField = ({
+                            label,
+                            text,
+                            onTextChange
+                          }: {
+                            label: string;
+                            text: string;
+                            onTextChange: (text: string) => void;
+                          }) => ...
+                    </code>
+                </pre>
+                    </div>
+                </section>
+                <section data-auto-animate data-auto-animate-unmatched="fade">
+                    <div style="opacity: 0.5">
+                        <h4>Inline typing</h4>
+                        <pre>
+                    <code class="hljs" data-line-numbers data-trim>
+                        const TextField = ({
+                            label,
+                            text,
+                            onTextChange
+                          }: {
+                            label: string;
+                            text: string;
+                            onTextChange: (text: string) => void;
+                          }) => ...
+                    </code>
+                </pre>
+                    </div>
+                    <div>
+                        <h4>Type alias</h4>
+                        <pre>
+                    <code class="hljs" data-line-numbers data-trim>
+                        type Props = {
+                            label: string;
+                            text: string;
+                            onTextChange: (text: string) => void;
+                          };
+                          const TextField = ({
+                            label,
+                            text,
+                            onTextChange
+                          }: Props
+                          ) => ...
+                    </code>
+                </pre>
+                    </div>
+                </section>
+                <section data-auto-animate data-auto-animate-unmatched="fade">
+                    <div style="opacity: 0.5">
+                        <h4>Type alias</h4>
+                        <pre>
+                    <code class="hljs" data-line-numbers data-trim>
+                        type Props = {
+                            label: string;
+                            text: string;
+                            onTextChange: (text: string) => void;
+                          };
+                          const TextField = ({
+                            label,
+                            text,
+                            onTextChange
+                          }: Props
+                          ) => ...
+                    </code>
+                </pre>
+                    </div>
+                    <div>
+                        <h4>Interface</h4>
+                        <pre>
+                    <code class="hljs" data-line-numbers data-trim>
+                        interface Props {
+                            label: string;
+                            text: string;
+                            onTextChange: (text: string) => void;
+                          }
+                    </code>
+                </pre>
+                    </div>
+                </section>
+                <section data-auto-animate data-auto-animate-unmatched="fade">
+                    <div  style="opacity: 0.5">
+                        <h4>Interface</h4>
+                        <pre>
+                    <code class="hljs" data-line-numbers data-trim>
+                        interface Props {
+                            label: string;
+                            text: string;
+                            onTextChange: (text: string) => void;
+                          }
+                    </code>
+                </pre>
+                    </div>
+                    <div>
+                        <h4>FC type</h4>
+                        <pre>
+                    <code class="hljs" data-line-numbers data-trim>
+                        const TextField: React.FC<Props> = ({
+                            label,
+                            text,
+                            onTextChange
+                          }) => ...
+                    </code>
+                </pre>
+                    </div>
+                </section>
+                <section data-auto-animate data-auto-animate-unmatched="fade">
+
+                        <h4>Extending a standard type</h4>
+                        <pre>
+                    <code class="hljs" data-line-numbers data-trim style="max-height: 500px">
+                        interface Props
+                        extends React.InputHTMLAttributes<
+                          HTMLInputElement
+                        > {
+                        label: string;
+                        text: string;
+                        onTextChange: (text: string) => void;
+                      }
+                      const TextField: React.FC< Partial<Props> > = ({
+                        label,
+                        text,
+                        onTextChange,
+                        maxLength,
+                        placeholder
+                      }) => ...
+                    </code>
+                </pre>
+
+                </section>
+                <section>
+                    <h2>Conclusion</h2>
+
+                </section>
+            </div>
+        </div>
+
+        <script src="dist/reveal.js"></script>
+        <script src="plugin/notes/notes.js"></script>
+        <script src="plugin/markdown/markdown.js"></script>
+        <script src="plugin/highlight/highlight.js"></script>
+        <script>
+            // More info about initialization & config:
+            // - https://revealjs.com/initialization/
+            // - https://revealjs.com/config/
+            Reveal.initialize({
+                hash: true,
+
+                // Learn about plugins: https://revealjs.com/plugins/
+                plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
+            });
+        </script>
+    </body>
+</html>
